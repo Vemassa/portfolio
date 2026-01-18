@@ -6,7 +6,7 @@ const projects = [
     title: "New app coming out soon",
     description:
       "Soon on the stores!",
-    image: "/projects/what-are-you-looking-at.webp",
+    image: "/portfolio/projects/what-are-you-looking-at.webp",
     link: "#",
     skills: ["React Native", "Expo", "Supabase", "Adapty", "Amplitude Analytics"],
     ownership: "Freelance",
@@ -15,7 +15,7 @@ const projects = [
     title: "Bistromo",
     description:
       "Ordering and kitchen display system for restaurants. Mobile app for orders, dashboard for management, KDS for fulfillment.",
-    image: "/projects/bistromo-1.webp",
+    image: "/portfolio/projects/bistromo-1.webp",
     link: "https://bistromo.com/",
     skills: ["React Native", "Expo", "NestJS", "NextJS", "TailwindCSS", "Stripe", "RevenueCat", "Amplitude Analytics", "Figma"],
     ownership: "Personal (Co-founder)",
@@ -24,7 +24,7 @@ const projects = [
     title: "Create My Flashcards",
     description:
       "Create and study flashcards. Add pairs with values and answers, track your progress.",
-    image: "/projects/cmf-1.webp",
+    image: "/portfolio/projects/cmf-1.webp",
     link: "https://create-my-flashcards.com/",
     skills: ["React Native", "Expo", "AWS", "NextJS", "TailwindCSS", "Figma"],
     ownership: "Personal",
@@ -33,7 +33,7 @@ const projects = [
     title: "Cochl.Sense Notification",
     description:
       "Sound monitoring app with real-time detection notifications. Manage projects, customize alerts, share detections with your team.",
-    image: "/projects/cs-notification-1.webp",
+    image: "/portfolio/projects/cs-notification-1.webp",
     link: "https://cochl.ai/",
     skills: ["React Native", "Expo"],
     ownership: "Cochl",
@@ -42,7 +42,7 @@ const projects = [
     title: "Cochl.Sense Experience",
     description:
       "Real-time sound identification app. Detects events like gunshots, baby crying, glass breaks. Notifies you what's happening around you and when.",
-    image: "/projects/cs-experience-1.webp",
+    image: "/portfolio/projects/cs-experience-1.webp",
     link: "https://cochl.ai/",
     skills: ["React Native", "Expo", "Expo Native Modules"],
     ownership: "Cochl",
@@ -51,7 +51,7 @@ const projects = [
     title: "Witom",
     description:
       "Security app that detects sound and motion using two phones. Monitor your space remotely with real-time alerts.",
-    image: "/projects/witom-1.webp",
+    image: "/portfolio/projects/witom-1.webp",
     link: "https://witom.cochl.ai/",
     skills: ["React Native", "Expo", "Expo Native Modules", "WebRTC"],
     ownership: "Cochl",
