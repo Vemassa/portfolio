@@ -1,32 +1,68 @@
 import { ArrowUpRight } from "lucide-react"
 
-const experiences = [
+type Experience = {
+  period: string
+  title: string
+  company: string
+  companyUrl: string
+  description: string
+  skills?: string[]
+}
+
+const experiences: Experience[] = [
   {
-    period: "2023 — Present",
-    title: "Senior Mobile Developer",
-    company: "TechCorp",
-    companyUrl: "https://example.com",
+    period: "2025 — Present",
+    title: "Co-founder",
+    company: "Bistromo",
+    companyUrl: "https://bistromo.com/",
     description:
-      "Lead mobile development for flagship products, architecting scalable React Native solutions serving 2M+ users. Mentor junior developers and establish best practices.",
-    skills: ["React Native", "Expo", "TypeScript", "Redux"],
+      "Co-founded an All-In-One Ordering & Kitchen Display System for Small Restaurants. Built a mobile app for taking orders, a dashboard for restaurant management, and a Kitchen Display System (KDS) for order fulfillment.",
+    // skills: ["React Native", "Expo", "NestJS", "NextJS", "TailwindCSS", "Stripe", "RevenueCat", "Amplitude Analytics"],
   },
   {
-    period: "2021 — 2023",
-    title: "Mobile Developer",
-    company: "StartupHub",
-    companyUrl: "https://example.com",
+    period: "2022 — 2025",
+    title: "Mobile Lead",
+    company: "Cochl",
+    companyUrl: "https://cochl.ai",
     description:
-      "Built and shipped 5+ mobile applications from concept to production. Collaborated with designers and product teams to deliver exceptional user experiences.",
-    skills: ["React Native", "Firebase", "Jest", "CI/CD"],
+      "Mobile Lead for the development of multiple mobile applications for audio AI solutions and smart home security products. Shipped multiple React Native applications used across the world.",
+    // skills: ["React Native", "Figma", "TypeScript", "Mobile Development"],
   },
   {
-    period: "2019 — 2021",
-    title: "Junior Mobile Developer",
-    company: "DigitalAgency",
-    companyUrl: "https://example.com",
+    period: "2020 — 2022",
+    title: "Mobile App Engineer",
+    company: "Insiteo",
+    companyUrl: "https://innovacom.com/company/insiteo/",
     description:
-      "Developed mobile applications for various clients across industries including fintech, healthcare, and e-commerce.",
-    skills: ["React Native", "JavaScript", "REST APIs", "Git"],
+      "Built and maintained the company mobile app, integrating native modules with Bluetooth Low Energy (BLE) for seamless device connectivity and communication.",
+    // skills: ["React Native", "Mobile Development", "TypeScript"],
+  },
+  // {
+  //   period: "2019",
+  //   title: "Mobile App Engineer",
+  //   company: "Dev-id",
+  //   companyUrl: "#",
+  //   description:
+  //     "Developed mobile applications for various projects. Gained experience in mobile development workflows and best practices.",
+  //   skills: ["React Native", "Mobile Development"],
+  // },
+  {
+    period: "2018 — 2019",
+    title: "Co-leader Mobile Focus Group",
+    company: "EPITECH - European Institute of Technology",
+    companyUrl: "https://www.epitech.eu",
+    description:
+      "Led the Mobile Focus Group, organizing workshops and mentoring students in mobile development technologies and practices.",
+    // skills: ["Leadership", "Mentoring", "Mobile Development"],
+  },
+  {
+    period: "2018 — 2019",
+    title: "Pedagogical Assistant",
+    company: "EPITECH - European Institute of Technology",
+    companyUrl: "https://www.epitech.eu",
+    description:
+      "Assisted in teaching and supporting students in their learning journey. Provided technical guidance and helped with project development.",
+    // skills: ["Teaching", "Mentoring", "Education"],
   },
 ]
 
@@ -75,13 +111,13 @@ export function ExperienceSection() {
                   </h3>
                   <p className="mt-2 text-sm leading-normal text-muted-foreground">{exp.description}</p>
                   <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                    {exp.skills.map((skill) => (
+                    {exp.skills ? exp.skills.map((skill) => (
                       <li key={skill} className="mr-1.5 mt-2">
                         <div className="flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium leading-5 text-primary">
                           {skill}
                         </div>
                       </li>
-                    ))}
+                    )) : null}
                   </ul>
                 </div>
               </div>

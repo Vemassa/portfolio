@@ -1,54 +1,81 @@
 import Image from "next/image"
-import { ArrowUpRight, Star, Download } from "lucide-react"
+import { ArrowUpRight, BriefcaseBusiness } from "lucide-react"
 
 const projects = [
   {
-    title: "FitTrack Pro",
+    title: "New app coming out soon",
     description:
-      "A comprehensive fitness tracking app with workout plans, progress analytics, and social features. Built with React Native and integrated with HealthKit/Google Fit.",
-    image: "placeholder.svg",
-    link: "https://example.com",
-    stats: { stars: "4.8", downloads: "500K+" },
-    skills: ["React Native", "Expo", "TypeScript", "Redux"],
+      "Soon on the stores!",
+    image: "/projects/what-are-you-looking-at.webp",
+    link: "#",
+    skills: ["React Native", "Expo", "Supabase", "Adapty", "Amplitude Analytics"],
+    ownership: "Freelance",
   },
   {
-    title: "PayFlow",
+    title: "Bistromo",
     description:
-      "A fintech mobile app enabling seamless peer-to-peer payments, bill splitting, and expense tracking with bank-grade security.",
-    image: "/placeholder.svg",
-    link: "https://example.com",
-    stats: { stars: "4.9", downloads: "1M+" },
-    skills: ["React Native", "Stripe", "Firebase", "Biometrics"],
+      "Ordering and kitchen display system for restaurants. Mobile app for orders, dashboard for management, KDS for fulfillment.",
+    image: "/projects/bistromo-1.webp",
+    link: "https://bistromo.com/",
+    skills: ["React Native", "Expo", "NestJS", "NextJS", "TailwindCSS", "Stripe", "RevenueCat", "Amplitude Analytics", "Figma"],
+    ownership: "Personal (Co-founder)",
   },
   {
-    title: "MealMate",
+    title: "Create My Flashcards",
     description:
-      "Recipe discovery and meal planning app with smart grocery lists, nutritional info, and personalized recommendations powered by ML.",
-    image: "/placeholder.svg",
-    link: "https://example.com",
-    stats: { stars: "4.7", downloads: "250K+" },
-    skills: ["React Native", "Expo", "GraphQL", "TensorFlow Lite"],
+      "Create and study flashcards. Add pairs with values and answers, track your progress.",
+    image: "/projects/cmf-1.webp",
+    link: "https://create-my-flashcards.com/",
+    skills: ["React Native", "Expo", "AWS", "NextJS", "TailwindCSS", "Figma"],
+    ownership: "Personal",
   },
   {
-    title: "StudyBuddy",
+    title: "Cochl.Sense Notification",
     description:
-      "An educational app with flashcards, spaced repetition, and collaborative study groups. Features offline mode and sync across devices.",
-    image: "/placeholder.svg",
-    link: "https://example.com",
-    stats: { stars: "4.6", downloads: "100K+" },
-    skills: ["React Native", "Realm", "Push Notifications", "Analytics"],
+      "Sound monitoring app with real-time detection notifications. Manage projects, customize alerts, share detections with your team.",
+    image: "/projects/cs-notification-1.webp",
+    link: "https://cochl.ai/",
+    skills: ["React Native", "Expo"],
+    ownership: "Cochl",
   },
-]
-
-const companies = [
-  { name: "Google" },
-  { name: "Meta" },
-  { name: "Shopify" },
-  { name: "Stripe" },
-  { name: "Airbnb" },
+  {
+    title: "Cochl.Sense Experience",
+    description:
+      "Real-time sound identification app. Detects events like gunshots, baby crying, glass breaks. Notifies you what's happening around you and when.",
+    image: "/projects/cs-experience-1.webp",
+    link: "https://cochl.ai/",
+    skills: ["React Native", "Expo", "Expo Native Modules"],
+    ownership: "Cochl",
+  },
+  {
+    title: "Witom",
+    description:
+      "Security app that detects sound and motion using two phones. Monitor your space remotely with real-time alerts.",
+    image: "/projects/witom-1.webp",
+    link: "https://witom.cochl.ai/",
+    skills: ["React Native", "Expo", "Expo Native Modules", "WebRTC"],
+    ownership: "Cochl",
+  },
 ]
 
 export function ProjectsSection() {
+  // Skills to exclude from core skills
+  const skillsBlacklist: string[] = []
+
+  // Calculate skill occurrences
+  const skillCounts = new Map<string, number>()
+  projects.forEach((project) => {
+    project.skills.forEach((skill) => {
+      skillCounts.set(skill, (skillCounts.get(skill) || 0) + 1)
+    })
+  })
+
+  // Get unique skills, filter blacklist, and sort by occurrence (descending)
+  const coreSkills = Array.from(skillCounts.entries())
+    .filter(([skill]) => !skillsBlacklist.includes(skill))
+    .sort((a, b) => b[1] - a[1]) // Sort by count descending
+    .map(([skill]) => skill)
+
   return (
     <section
       id="projects"
@@ -59,23 +86,6 @@ export function ProjectsSection() {
         <h2 className="text-sm font-bold uppercase tracking-widest text-foreground lg:sr-only">Projects</h2>
       </div>
 
-      {/* Companies Section */}
-      <div className="mb-12">
-        <p className="mb-6 text-sm font-medium uppercase tracking-widest text-muted-foreground">Trusted by teams at</p>
-        <div className="flex flex-wrap items-center gap-6 opacity-60">
-          {companies.map((company) => (
-            <Image
-              key={company.name}
-              src="/placeholder.svg"
-              alt={company.name}
-              width={100}
-              height={32}
-              className="h-8 w-auto grayscale"
-            />
-          ))}
-        </div>
-      </div>
-
       {/* Projects Grid */}
       <div>
         <ul className="group/list">
@@ -83,7 +93,7 @@ export function ProjectsSection() {
             <li key={index} className="mb-12">
               <div className="group relative grid gap-4 pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-card lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg" />
-                <div className="z-10 sm:order-2 sm:col-span-6">
+                <div className={`z-10 sm:order-2 ${Array.isArray(project.image) ? "sm:col-span-3" : "sm:col-span-4"}`}>
                   <h3>
                     <a
                       href={project.link}
@@ -100,15 +110,18 @@ export function ProjectsSection() {
                     </a>
                   </h3>
                   <p className="mt-2 text-sm leading-normal text-muted-foreground">{project.description}</p>
+                  {/* <div className="mt-2 text-xs text-muted-foreground">
+                    <span className="font-medium">{project.ownership}</span>
+                  </div> */}
                   <div className="mt-2 flex items-center gap-4 text-xs text-muted-foreground">
                     <span className="flex items-center gap-1">
-                      <Star className="h-3 w-3 fill-primary text-primary" />
-                      {project.stats.stars}
+                      <BriefcaseBusiness className="h-3 w-3" />
+                      {project.ownership}
                     </span>
-                    <span className="flex items-center gap-1">
+                    {/* <span className="flex items-center gap-1">
                       <Download className="h-3 w-3" />
                       {project.stats.downloads}
-                    </span>
+                    </span> */}
                   </div>
                   <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
                     {project.skills.map((skill) => (
@@ -120,13 +133,28 @@ export function ProjectsSection() {
                     ))}
                   </ul>
                 </div>
-                <Image
-                  src="/placeholder.svg"
-                  alt={`Screenshot of ${project.title}`}
-                  width={200}
-                  height={120}
-                  className="z-10 rounded border-2 border-border/50 transition group-hover:border-border/80 sm:order-1 sm:col-span-2 sm:translate-y-1"
-                />
+                {Array.isArray(project.image) ? (
+                  <div className="z-10 flex flex-col gap-0.5 sm:order-1 sm:col-span-5 sm:translate-y-1">
+                    {project.image.map((imgSrc, imgIndex) => (
+                      <Image
+                        key={imgIndex}
+                        src={imgSrc}
+                        alt={`Screenshot ${imgIndex + 1} of ${project.title}`}
+                        width={1160}
+                        height={540}
+                        className="w-full rounded border-2 border-border/50 transition group-hover:border-border/80"
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <Image
+                    src={project.image}
+                    alt={`Screenshot of ${project.title}`}
+                    width={1024}
+                    height={500}
+                    className="z-10 w-full h-auto rounded border-2 border-border/50 transition group-hover:border-border/80 sm:order-1 sm:col-span-4 sm:translate-y-1"
+                  />
+                )}
               </div>
             </li>
           ))}
@@ -137,23 +165,7 @@ export function ProjectsSection() {
       <div className="mt-12 rounded-lg bg-card p-6">
         <h3 className="mb-4 text-sm font-bold uppercase tracking-widest text-foreground">Core Skills</h3>
         <div className="flex flex-wrap gap-2">
-          {[
-            "React Native",
-            "Expo",
-            "TypeScript",
-            "JavaScript",
-            "Redux",
-            "MobX",
-            "Firebase",
-            "REST APIs",
-            "GraphQL",
-            "CI/CD",
-            "Jest",
-            "Detox",
-            "App Store Connect",
-            "Google Play Console",
-            "Performance Optimization",
-          ].map((skill) => (
+          {coreSkills.map((skill) => (
             <span
               key={skill}
               className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
