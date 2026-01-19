@@ -9,17 +9,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Quentin Santos - Mobile Engineer Portfolio",
   description: "React Native & Expo specialist building beautiful mobile experiences",
-  icons: {
-    icon: [
-      {
-        url: "/icon-32x32.png",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-  },
 }
 
 export default function RootLayout({
@@ -29,6 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/portfolio/favicon.ico" />
+      </head>
       <body
         className={`${inter.className} antialiased`}
       >
