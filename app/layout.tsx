@@ -7,7 +7,7 @@ import { CursorLight } from "@/components/cursor-light";
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Mobile App Developer Portfolio",
+  title: "Quentin Santos - Mobile Engineer Portfolio",
   description: "React Native & Expo specialist building beautiful mobile experiences",
   icons: {
     icon: [

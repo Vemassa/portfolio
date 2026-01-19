@@ -188,8 +188,8 @@ export function ProjectsSection() {
             Tailwind CSS
           </a>
           , deployed on{" "}
-          <a href="https://vercel.com" className="font-medium text-foreground hover:text-primary">
-            Vercel
+          <a href="https://pages.github.com/" className="font-medium text-foreground hover:text-primary">
+            GitHub Pages
           </a>
           .
         </p>
